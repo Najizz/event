@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --light-bg: linear-gradient(135deg, #fff0f5, #fdebd0);
+      --light-text: #5a3e36;
+      --accent: #e6b89c;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-info h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .event-info p {
+      font-size: 1.2rem;
+    }
+
+    .details div {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+
+    .rsvp-button {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .rsvp-button button {
+      background-color: var(--accent);
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .bottom-message {
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 1rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 2.2rem;
+      }
+
+      .event-info h1 {
+        font-size: 2.2rem;
+      }
+
+      .rsvp-button button {
+        font-size: 1rem;
+        padding: 0.6rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>You're Invited</header>
+
+  <div class="card event-info">
+    <h1>Liam & Olivia</h1>
+    <p>Together with their families, joyfully invite you to their wedding celebration.</p>
+  </div>
+
+  <div class="card details">
+    <div>📅 Saturday, December 20, 2025 | 4:00 PM</div>
+    <div>📍 Beachside Bliss Resort, Malibu, California</div>
+  </div>
+
+  <div class="card countdown">
+    <strong>Countdown to the Big Day:</strong><br />
+    <span id="countdown"></span>
+  </div>
+
+  <div class="rsvp-button">
+    <button onclick="alert('Thank you for your RSVP!')">RSVP Now</button>
+  </div>
+
+  <div class="bottom-message">
+    We can't wait to share this day with you. Please join us for a night filled with love, laughter, and lasting memories.
+  </div>
+
+  <script>
+    // Countdown Timer
+    const countdownElement = document.getElementById("countdown");
+    const eventDate = new Date("2025-12-20T16:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "🎉 The wedding day is here!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
